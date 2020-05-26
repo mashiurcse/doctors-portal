@@ -58,16 +58,24 @@ const BookApplointment = () => {
       <hr />
 
       <div className={classes.root}>
-        <p>
+        <h3>
           {" "}
           Available Appointment on >>> <span id="showDate"></span>
-        </p>
+        </h3>
         <Grid container spacing={4}>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
+
               <Button
                 href="/addAppointment"
                 variant="contained"
@@ -80,10 +88,16 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {" "}
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
               <Button
                 href="/addAppointment"
                 variant="contained"
@@ -96,10 +110,16 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {" "}
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
               <Button
                 href="/bookAppointment"
                 variant="contained"
@@ -112,10 +132,16 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {" "}
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
               <Button
                 href="/bookAppointment"
                 variant="contained"
@@ -128,10 +154,16 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {" "}
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
               <Button
                 href="/bookAppointment"
                 variant="contained"
@@ -144,10 +176,16 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              {" "}
-              Teeth Orthodontics <br /> 8:00 AM - 9:00 AM <br />{" "}
-              <small>10 Spaces Available</small>
-              <br />
+              <p style={{ fontWeight: "700", color: "green" }}>
+                Teeth Orthodontics
+              </p>
+              <p style={{ fontWeight: "600", color: "green" }}>
+                {" "}
+                8:00 AM - 9:00 AM
+              </p>
+              <p style={{ fontWeight: "400", color: "lightgreen" }}>
+                10 Spaces Available
+              </p>
               <Button
                 href="/bookAppointment"
                 variant="contained"
