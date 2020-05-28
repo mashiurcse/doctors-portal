@@ -132,7 +132,7 @@ const BookApplointment = () => {
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              <p style={{ fontWeight: "700", color: "green" }}>
+              <p id="TeethOrtho" style={{ fontWeight: "700", color: "green" }}>
                 Teeth Orthodontics
               </p>
               <p style={{ fontWeight: "600", color: "green" }}>
