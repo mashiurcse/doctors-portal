@@ -17,7 +17,7 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
           }}
-          href="/bookAppointment"
+          href="/Appointment"
           variant="contained"
           color="secondary"
         >
