@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Paper,
   Typography,
@@ -13,7 +13,6 @@ import {
   Select,
   InputLabel,
 } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -55,14 +54,13 @@ const styles = {
 };
 
 const Schedule = (props) => {
-  let { schedule, appointmentDate, doctors } = props;
+  let { schedule, appointmentDate } = props;
+  let { department } = schedule;
   let [selectedDate, setSelectedDate] = React.useState(appointmentDate);
-  let [doctorId, setDoctorId] = React.useState("");
-  let [patientToken, setPatientToken] = React.useState(0);
+  let [time, setTime] = React.useState("");
   let [applySuccessful, setApplySuccessful] = React.useState(false);
-  let [applyFailed, setApplyFailed] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const { register, handleSubmit, watch, errors, reset } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -71,7 +69,6 @@ const Schedule = (props) => {
   const handleClose = () => {
     setOpen(false);
     setApplySuccessful(false);
-    setApplyFailed(false);
   };
 
   const handleDateChange = (date) => {
@@ -88,19 +85,11 @@ const Schedule = (props) => {
     }-${year}`;
   };
 
-  function randomToken(min, max) {
-    return min + Math.floor((max - min) * Math.random());
-  }
-
   const onSubmit = (data, e) => {
-    const patToken = randomToken(1, 100);
-    setPatientToken(patToken);
-
     const appointment = {
       ...data,
-      schedule: { ...schedule },
+      Department:  department ,
       appointmentDate: getFormatedDate(selectedDate),
-      patientToken: patToken,
       pending: true,
       prescription: false,
     };
@@ -117,12 +106,12 @@ const Schedule = (props) => {
         setApplySuccessful(true);
         e.target.reset(); //clear form
       })
-      .catch((err) => applyFailed(true));
+      .catch((err) => console.log(err));
   };
 
-  const handleDoctorChange = (event) => {
-    const doctor = event.target.name;
-    setDoctorId(event.target.value);
+  const handleTimeChange = (event) => {
+    const timee = event.target.name;
+    setTime(event.target.value);
   };
 
   return (
@@ -148,45 +137,36 @@ const Schedule = (props) => {
       >
         <DialogTitle id="form-dialog-title">{schedule.department}</DialogTitle>
         {applySuccessful && (
-          <Typography
-            variant="h6"
-            style={styles.successMsg}
-          >{`Application successful! Please Remember your token number is: ${patientToken}`}</Typography>
+          <Typography variant="h6" style={styles.successMsg}>
+            Thank you for your Appointment!
+          </Typography>
         )}
-        {applyFailed && (
-          <Typography
-            variant="h6"
-            style={styles.errorMsg}
-          >{`Application submission failed! Please try again later.`}</Typography>
-        )}
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogContent>
             <DialogContentText>Fill up the Appointment Form.</DialogContentText>
 
             <FormControl variant="outlined">
               <InputLabel htmlFor="outlined-age-native-simple">
-                Select a Doctor
+                Select Time
               </InputLabel>
               <Select
                 native
-                style={styles.doctorSelect}
-                value={doctorId}
-                onChange={handleDoctorChange}
-                label="Select a doctor"
+                label="Select Time"
+                value={time}
+                onChange={handleTimeChange}
                 autofocus
                 inputRef={register({ required: true })}
-                error={errors.doctor ? true : false}
                 inputProps={{
-                  name: "doctorId",
+                  name: "Appointment Time",
                   id: "outlined-age-native-simple",
                 }}
               >
                 <option aria-label="None" value="" />
-                {doctors.map((doctor) => (
-                  <option value={doctor._id}>{doctor.name}</option>
-                ))}
+                <option>8:00AM - 8:30AM</option>
+                <option>8:40AM - 9:10AM</option>
+                <option>9:20AM - 9:50AM</option>
               </Select>
-              {errors.doctorId && <div>Please select a doctor</div>}
             </FormControl>
 
             <TextField

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import { Grid, Typography, CircularProgress } from "@material-ui/core";
+import { Grid, Typography} from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker,
 } from "@material-ui/pickers";
 import Schedule from "../Schedule/Schedule";
 import Calendar from "react-calendar";
@@ -53,10 +52,7 @@ const styles = {
 const Appointment = () => {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   const [schedules, setSchedules] = useState([]);
-  const [doctors, setDoctors] = React.useState([]);
   const [appointmentDate, setAppointmentDate] = useState(new Date());
-  // const [progress, setProgress] = React.useState(0);
-  // const [loadingSchedules, setLoadingSchedules] = useState(true);
   const [dateChanged, setDateChanged] = useState(false);
 
   useEffect(() => {
@@ -68,43 +64,13 @@ const Appointment = () => {
         //setLoadingSchedules(false);
       })
       .catch((err) => console.log(err));
-
-    //get all doctors
-    fetch("https://doctors-portal-back.herokuapp.com/doctors")
-      .then((res) => res.json())
-      .then((data) => {
-        setDoctors(data);
-      })
-      .catch((err) => console.log(err));
   }, []);
-
-  // useEffect(() => {
-  //   function tick() {
-  //     // reset when reaching 100%
-  //     setProgress((oldProgress) => (oldProgress >= 100 ? 0 : oldProgress + 1));
-  //   }
-
-  //   const timer = setInterval(tick, 20);
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, [loadingSchedules]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setAppointmentDate(date);
     setDateChanged(!dateChanged);
   };
-
-  // const getFormatedDate = (date) => {
-  //   const datee = date.getDate();
-  //   const month = date.getMonth() + 1;
-  //   const year = date.getFullYear();
-
-  //   return `${(datee < 10 ? "0" : "") + datee}-${
-  //     (date.getMonth() + 1 < 10 ? "0" : "") + month
-  //   }-${year}`;
-  // };
 
   const getFormattedDate2 = (date) => {
     const months = [
@@ -143,18 +109,6 @@ const Appointment = () => {
                   showWeekNumbers={true}
                   minDate={new Date()}
                 />
-                {/* <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Select Appointment Date"
-                  format="dd-MM-yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                  style={styles.datepicker}
-                /> */}
               </Grid>
             </MuiPickersUtilsProvider>
           </Grid>
@@ -178,47 +132,28 @@ const Appointment = () => {
         </Typography>
 
         <Grid container spacing={3}>
-          {
-            //!loadingSchedules &&
-            schedules.map((schedule) => {
-              return (
-                <Grid md={4} xs={12}>
-                  {dateChanged && (
-                    <Schedule
-                      schedule={{
-                        ...schedule,
-                      }}
-                      appointmentDate={appointmentDate}
-                      doctors={doctors}
-                    />
-                  )}
-                  {!dateChanged && (
-                    <Schedule
-                      schedule={{
-                        ...schedule,
-                      }}
-                      appointmentDate={appointmentDate}
-                      doctors={doctors}
-                    />
-                  )}
-                </Grid>
-              );
-            })
-          }
-
-          {/* {loadingSchedules && (
-            <Grid container justify="space-around">
-              <Typography variant="h5" style={styles.loading}>
-                Loading{" "}
-                <CircularProgress
-                  variant="determinate"
-                  value={progress}
-                  color="secondary"
-                  style={styles.loadingCircle}
-                />
-              </Typography>
-            </Grid>
-          )} */}
+          {schedules.map((schedule) => {
+            return (
+              <Grid md={4} xs={12}>
+                {dateChanged && (
+                  <Schedule
+                    schedule={{
+                      ...schedule,
+                    }}
+                    appointmentDate={appointmentDate}
+                  />
+                )}
+                {!dateChanged && (
+                  <Schedule
+                    schedule={{
+                      ...schedule,
+                    }}
+                    appointmentDate={appointmentDate}
+                  />
+                )}
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
     </div>
