@@ -31,7 +31,7 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
           }}
-          href="/addAppointment"
+          href="/Dashboard"
           variant="contained"
           color="secondary"
         >

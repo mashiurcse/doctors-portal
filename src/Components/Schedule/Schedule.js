@@ -88,13 +88,13 @@ const Schedule = (props) => {
   const onSubmit = (data, e) => {
     const appointment = {
       ...data,
-      Department:  department ,
+      Department: department,
       appointmentDate: getFormatedDate(selectedDate),
       pending: true,
       prescription: false,
     };
 
-    fetch("http://localhost:4200/addAppointments", {
+    fetch("https://doctorsportalapp.herokuapp.com/addAppointments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -158,7 +158,7 @@ const Schedule = (props) => {
                 autofocus
                 inputRef={register({ required: true })}
                 inputProps={{
-                  name: "Appointment Time",
+                  name: "time",
                   id: "outlined-age-native-simple",
                 }}
               >

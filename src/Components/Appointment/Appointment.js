@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import { Grid, Typography} from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import Schedule from "../Schedule/Schedule";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -57,7 +55,7 @@ const Appointment = () => {
 
   useEffect(() => {
     //get all schedules
-    fetch("https://doctors-portal-back.herokuapp.com/schedules")
+    fetch("https://doctorsportalapp.herokuapp.com/schedules")
       .then((res) => res.json())
       .then((data) => {
         setSchedules(data);
