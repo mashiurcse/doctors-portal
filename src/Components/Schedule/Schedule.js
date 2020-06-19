@@ -162,7 +162,6 @@ const Schedule = (props) => {
                   id: "outlined-age-native-simple",
                 }}
               >
-                <option aria-label="None" value="" />
                 <option>8:00AM - 8:30AM</option>
                 <option>8:40AM - 9:10AM</option>
                 <option>9:20AM - 9:50AM</option>
